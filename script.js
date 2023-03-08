@@ -18,17 +18,17 @@ Outcomes:
 const gameRules = {
     "paper": {
         "paper": 0,
-        "scissor": -1,
+        "scissors": -1,
         "rock": 1
     },
-    "scissor": {
+    "scissors": {
         "paper": 1,
-        "scissor": 0,
+        "scissors": 0,
         "rock": -1
     },
     "rock": {
         "paper": -1,
-        "scissor": 1,
+        "scissors": 1,
         "rock": 0
     }
 }
@@ -48,12 +48,12 @@ function playRound(playerSelection, computerSelection) {
 
 
 function inputPlayerVerification(){
-    const nameVerificator = ["rock", "paper", "scissor"]
-    playerSelection = prompt("Rock, paper or scissor?").toLowerCase()
+    const nameVerificator = ["rock", "paper", "scissors"]
+    playerSelection = prompt("Rock, paper or scissors?").toLowerCase()
 
     while(!nameVerificator.includes(playerSelection)) {
         alert(`Warning: You just can write ${nameVerificator}`)
-        playerSelection = prompt("Rock, Paper or Scissor?").toLowerCase()
+        playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase()
     }
     return playerSelection
 }
@@ -100,7 +100,7 @@ function game(){
     roundCounter = 1
 }
 
-while(confirm(`Let's play rock, paper and scissor!?`)){
+while(confirm(`Let's play rock, paper and scissors!?`)){
     game()
     gameCounter++
 }
