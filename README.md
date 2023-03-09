@@ -21,6 +21,10 @@ Round Winner Conditions:
 
 For the Player to win, player must be winner at least three rounds.
 
+For our game the Player should write
+
+NOTE: if you write a wrong word the round will not work
+
 
 ## ✨ Preview
 Use the following link to preview our live game: https://bn-frontend-training.github.io/rock-paper-scissors-game.js/
