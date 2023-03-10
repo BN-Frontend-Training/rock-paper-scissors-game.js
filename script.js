@@ -12,9 +12,6 @@ Outcomes:
 ​
 */
 
-
-
-
 const gameRules = {
     "paper": {
         "paper": 0,
@@ -84,7 +81,7 @@ let gameCounter = 1
 
 function game(){
     console.log(`
-    ------------------------${gameCounter}° GAME-------------------------
+    ------------------------ GAME ${gameCounter} -------------------------
     `)
     for(let i = 0; i < 5; i++){
         const playerSelection = inputPlayerVerification()
@@ -93,7 +90,7 @@ function game(){
         console.log(`Player: ${playerSelection} | Computer: ${computerSelection}`)
     }
     console.log(`
-    ------- RESULT OF ${gameCounter}° GAME: ${totalScore(playerScore, computerScore)} ------
+    ------- RESULT OF GAME ${gameCounter}: ${totalScore(playerScore, computerScore)} ------
     `)
     playerScore = 0
     computerScore = 0
