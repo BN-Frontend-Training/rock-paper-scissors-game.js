@@ -43,14 +43,13 @@ function playRound(playerSelection, computerSelection) {
     return gameRules[computerSelection][playerSelection]
 }
 
-
-function inputPlayerVerification(){
+function inputPlayerVerification() {
     const nameVerificator = ["rock", "paper", "scissors"]
-    playerSelection = prompt("Rock, paper or scissors?").toLowerCase()
+    playerSelection = prompt("Rock, paper or scissors?").trim().toLowerCase()
 
     while(!nameVerificator.includes(playerSelection)) {
         alert(`Warning: You just can write ${nameVerificator}`)
-        playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase()
+        playerSelection = prompt("Rock, Paper or Scissors?").trim().toLowerCase()
     }
     return playerSelection
 }
@@ -79,7 +78,7 @@ let computerScore = 0
 let roundCounter = 1
 let gameCounter = 1
 
-function game(){
+function game() {
     console.log(`
     ------------------------ GAME ${gameCounter} -------------------------
     `)
