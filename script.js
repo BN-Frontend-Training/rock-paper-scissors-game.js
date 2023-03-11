@@ -12,6 +12,8 @@ Outcomes:
 ​
 */
 
+
+
 const gameRules = {
     "paper": {
         "paper": 0,
@@ -43,14 +45,30 @@ function playRound(playerSelection, computerSelection) {
     return gameRules[computerSelection][playerSelection]
 }
 
+function playerNullEntryValidation(validWord){
+    if(validWord){
+        playerSelection = prompt("Rock, paper or scissors?")
+    }
+    else{ 
+        playerSelection = prompt(`Warning: You just can write rock, paper or scissors. Try it again!`)
+    }
+    while(playerSelection === null){
+        if(confirm("Are you sure you want to finish the game?")) throw "You decided to finish the game. To restart, refresh the page."
+        playerSelection = prompt("Rock, paper or scissors?")
+    }
+    return playerSelection
+}
 
 function inputPlayerVerification(){
     const nameVerificator = ["rock", "paper", "scissors"]
-    playerSelection = prompt("Rock, paper or scissors?").toLowerCase()
+    let validWord = true
+    playerSelection = playerNullEntryValidation(validWord)
+    playerSelection = playerSelection.toLowerCase().trim()
 
     while(!nameVerificator.includes(playerSelection)) {
-        alert(`Warning: You just can write ${nameVerificator}`)
-        playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase()
+        validWord = false
+        playerSelection = playerNullEntryValidation(validWord)
+        playerSelection = playerSelection.toLowerCase().trim()
     }
     return playerSelection
 }
@@ -68,7 +86,7 @@ function countRoundScore(roundResult) {
     roundCounter ++
 } 
 
-function totalScore(playerScore, computerScore){
+function gameResult(playerScore, computerScore){
     if(playerScore > computerScore) return "You won! :)"
     else if(playerScore < computerScore) return "You lost! :("
     else if(playerScore == computerScore) return "Draw! Try again." 
@@ -90,14 +108,16 @@ function game(){
         console.log(`Player: ${playerSelection} | Computer: ${computerSelection}`)
     }
     console.log(`
-    ------- RESULT OF GAME ${gameCounter}: ${totalScore(playerScore, computerScore)} ------
+    ------- RESULT OF GAME ${gameCounter}: ${gameResult(playerScore, computerScore)} ------
     `)
     playerScore = 0
     computerScore = 0
     roundCounter = 1
 }
 
-while(confirm(`Let's play rock, paper and scissors!?`)){
-    game()
+while(true){
+    if(gameCounter == 1 && confirm(`Let's play rock, paper and scissors!?`)) game()
+    else if(gameCounter > 1 && confirm("End of the game. Do you wanna play again?")) game()
+    else throw "You decided to finish the game. To restart, refresh the page."
     gameCounter++
 }
